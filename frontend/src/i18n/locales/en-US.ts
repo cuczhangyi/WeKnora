@@ -3691,7 +3691,9 @@ export default {
       downloadFailed: 'Failed to download {name}',
       downloadStartFailed: 'Failed to start download',
       ollamaUnavailable: 'Ollama service is unavailable, local models cannot be selected',
-      ollamaNotSupportRerank: 'Ollama does not support ReRank models, please use a remote API instead',
+      ollamaCompatible: 'Ollama Compatible Interface',
+      ollamaRerankRemoteOnly: 'ReRank does not support local source. To use Ollama, choose remote source and set the interface type to Ollama compatible.',
+      rerankInterfaceTypeDesc: 'Use OpenAI-compatible `/rerank` by default. Switch to Ollama compatible when the target service exposes rerank via an Ollama-style `/api/chat` endpoint.',
       goToOllamaSettings: 'Open Settings',
       validation: {
         modelNameRequired: 'Please enter the model name',

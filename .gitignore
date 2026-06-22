@@ -2,8 +2,12 @@
 .*
 # 但不忽略特定隐藏文件和目录
 !.env.example
+!.env.local-dev.example
 !.gitignore
 !.github/
+!.vscode/
+!.vscode/launch.json
+!.vscode/tasks.json
 
 # 敏感文件
 *.pem

@@ -314,6 +314,10 @@ curl --location 'http://localhost:8080/api/v1/initialization/embedding/test' \
 
 ## POST `/initialization/rerank/check` - 检查重排序模型
 
+> `Rerank` 测试支持两种接口风格：
+> - 默认 `openai`：按远程 `/rerank` 调用
+> - `ollama`：按 Ollama `/api/chat` 兼容路径调用
+
 **请求**:
 
 ```curl
@@ -321,9 +325,10 @@ curl --location 'http://localhost:8080/api/v1/initialization/rerank/check' \
 --header 'X-API-Key: sk-xxxxx' \
 --header 'Content-Type: application/json' \
 --data '{
-    "api_url": "https://api.cohere.ai/v1",
-    "api_key": "sk-xxxxx",
-    "model": "rerank-english-v3.0"
+    "modelName": "dengcao/Qwen3-Reranker-4B:Q4_K_M",
+    "baseUrl": "http://192.168.1.126:11435",
+    "provider": "generic",
+    "interfaceType": "ollama"
 }'
 ```
 

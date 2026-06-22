@@ -1,0 +1,60 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "WeKnora: Backend",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "preLaunchTask": "WeKnora: Infra Start",
+      "program": "${workspaceFolder}/cmd/server",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "DB_HOST": "localhost",
+        "DOCREADER_ADDR": "localhost:50051",
+        "DOCREADER_TRANSPORT": "grpc",
+        "MINIO_ENDPOINT": "localhost:9000",
+        "REDIS_ADDR": "localhost:6379",
+        "MILVUS_ADDRESS": "localhost:19530",
+        "NEO4J_URI": "bolt://localhost:7687",
+        "QDRANT_HOST": "localhost",
+        "LOCAL_STORAGE_BASE_DIR": "${workspaceFolder}/.local-data/files"
+      },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "WeKnora: Frontend Dev Server",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev",
+      "cwd": "${workspaceFolder}/frontend"
+    },
+    {
+      "name": "WeKnora: Frontend Chrome",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/frontend"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "WeKnora: Backend + Chrome",
+      "configurations": [
+        "WeKnora: Backend",
+        "WeKnora: Frontend Chrome"
+      ],
+      "stopAll": true
+    },
+    {
+      "name": "WeKnora: Full Stack",
+      "configurations": [
+        "WeKnora: Backend",
+        "WeKnora: Frontend Dev Server",
+        "WeKnora: Frontend Chrome"
+      ],
+      "stopAll": true
+    }
+  ]
+}

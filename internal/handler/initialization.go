@@ -1860,7 +1860,13 @@ func (h *InitializationHandler) checkRerankModelConnection(
 		return false, fmt.Sprintf("创建Reranker失败: %v", err)
 	}
 
-	results, err := reranker.Rerank(ctx, "ping", []string{"pong"})
+	results, err := reranker.Rerank(
+		ctx,
+		"Find the document about network connectivity.",
+		[]string{
+			"This document is about network connectivity tests and ping commands.",
+		},
+	)
 	if err != nil {
 		return false, fmt.Sprintf("重排测试失败: %v", err)
 	}

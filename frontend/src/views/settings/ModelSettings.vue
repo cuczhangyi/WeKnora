@@ -167,6 +167,7 @@ function convertToLegacyFormat(model: ModelConfig) {
     provider: model.parameters.provider || '',
     dimension: model.parameters.embedding_parameters?.dimension,
     supportsDimensionOverride: model.parameters.embedding_parameters?.supports_dimension_override || false,
+    interfaceType: model.parameters.interface_type || ((backendTypeToModelType[model.type] || 'chat') === 'rerank' ? 'openai' : undefined),
     isBuiltin: model.is_builtin || false,
     supportsVision: model.parameters.supports_vision || false,
     customHeaders: model.parameters.custom_headers
@@ -411,6 +412,9 @@ const handleModelSave = async (modelData: any) => {
         ...apiKeyFields,
         ...appSecretFields,
         provider: modelData.provider || '',
+        ...((saveType === 'rerank' || saveType === 'vllm') && modelData.interfaceType
+          ? { interface_type: modelData.interfaceType }
+          : {}),
         ...extraConfigFields,
         ...(Object.keys(customHeadersMap).length > 0 ? { custom_headers: customHeadersMap } : {}),
         ...(saveType === 'embedding' && modelData.dimension ? {

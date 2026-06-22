@@ -1,0 +1,106 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "WeKnora: Infra Start",
+      "type": "shell",
+      "command": "make",
+      "args": [
+        "dev-start",
+        "DEV_ARGS=--qdrant --minio --no-langfuse"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "WeKnora: Infra Stop",
+      "type": "shell",
+      "command": "make",
+      "args": [
+        "dev-stop"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "WeKnora: Infra Restart",
+      "type": "shell",
+      "command": "make",
+      "args": [
+        "dev-restart"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "WeKnora: Infra Status",
+      "type": "shell",
+      "command": "make",
+      "args": [
+        "dev-status"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "WeKnora: Infra Logs",
+      "type": "shell",
+      "command": "make",
+      "args": [
+        "dev-logs"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "WeKnora: Backend Dev",
+      "type": "shell",
+      "command": "make",
+      "args": [
+        "dev-app"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "WeKnora: Frontend Dev",
+      "type": "shell",
+      "command": "make",
+      "args": [
+        "dev-frontend"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "WeKnora: Health Check",
+      "type": "shell",
+      "command": "sh",
+      "args": [
+        "-c",
+        "curl -sS http://localhost:8080/health && echo && curl -sS http://localhost:6333/collections >/dev/null && echo qdrant-ok && curl -sS http://localhost:9000/minio/health/live >/dev/null && echo minio-ok"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

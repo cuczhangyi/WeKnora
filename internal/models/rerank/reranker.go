@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/Tencent/WeKnora/internal/logger"
 	"github.com/Tencent/WeKnora/internal/models/provider"
@@ -79,13 +80,14 @@ func (d *DocumentInfo) UnmarshalJSON(data []byte) error {
 }
 
 type RerankerConfig struct {
-	APIKey      string
-	BaseURL     string
-	ModelName   string
-	Source      types.ModelSource
-	ModelID     string
-	Provider    string // Provider identifier: openai, aliyun, zhipu, siliconflow, jina, generic
-	ExtraConfig map[string]string
+	APIKey        string
+	BaseURL       string
+	ModelName     string
+	Source        types.ModelSource
+	ModelID       string
+	InterfaceType string
+	Provider      string // Provider identifier: openai, aliyun, zhipu, siliconflow, jina, generic
+	ExtraConfig   map[string]string
 	// CustomHeaders 允许在调用远程 API 时附加自定义 HTTP 请求头（类似 OpenAI Python SDK 的 extra_headers）。
 	CustomHeaders map[string]string
 	AppID         string
@@ -105,6 +107,7 @@ func ConfigFromModel(m *types.Model, appID, appSecret string) *RerankerConfig {
 		BaseURL:       m.Parameters.BaseURL,
 		ModelName:     m.Name,
 		Source:        m.Source,
+		InterfaceType: m.Parameters.InterfaceType,
 		Provider:      m.Parameters.Provider,
 		ExtraConfig:   m.Parameters.ExtraConfig,
 		CustomHeaders: m.Parameters.CustomHeaders,
@@ -131,6 +134,15 @@ type customHeaderSetter interface {
 }
 
 func newReranker(config *RerankerConfig) (Reranker, error) {
+	if strings.EqualFold(config.InterfaceType, "ollama") {
+		reranker, err := NewOllamaChatReranker(config)
+		if err != nil {
+			return nil, err
+		}
+		reranker.SetCustomHeaders(config.CustomHeaders)
+		return reranker, nil
+	}
+
 	// Use provider field if set, otherwise detect from URL using provider registry
 	providerName := provider.ProviderName(config.Provider)
 	if providerName == "" {

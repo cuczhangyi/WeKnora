@@ -21,7 +21,7 @@ export interface ModelConfig {
       truncate_prompt_tokens?: number;
       supports_dimension_override?: boolean;
     };
-    interface_type?: 'ollama' | 'openai'; // VLLM专用
+    interface_type?: 'ollama' | 'openai'; // VLLM / custom Rerank interface type
     parameter_size?: string; // Ollama模型参数大小 (e.g., "7B", "13B", "70B")
     extra_config?: Record<string, string>; // Provider-specific configuration
     // 自定义 HTTP 请求头（类似 Python OpenAI SDK 的 extra_headers），

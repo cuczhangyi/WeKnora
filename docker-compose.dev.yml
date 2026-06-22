@@ -237,10 +237,10 @@ services:
     restart: "no"
 
   docreader:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile.docreader
     image: wechatopenai/weknora-docreader:${WEKNORA_VERSION:-latest}
+    # Dev default: use the published image so `make dev-start` does not block on
+    # a large local docreader rebuild. Rebuild manually only when you are
+    # actively changing docreader itself.
     container_name: WeKnora-docreader-dev
     ports:
       - "${DOCREADER_PORT:-50051}:50051"

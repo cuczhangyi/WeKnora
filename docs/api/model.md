@@ -224,6 +224,10 @@ curl --location 'http://localhost:8080/api/v1/models' \
 
 ### 创建排序模型（Rerank）
 
+> 默认远程 Rerank 走 OpenAI 兼容 `/rerank` 接口。
+> 如果目标服务通过 **Ollama `/api/chat`** 提供重排能力，请把
+> `parameters.interface_type` 设为 `ollama`。
+
 **远程 API 模型（阿里云 DashScope）**:
 
 ```curl
@@ -239,6 +243,26 @@ curl --location 'http://localhost:8080/api/v1/models' \
         "base_url": "https://dashscope.aliyuncs.com/api/v1/services/rerank/text-rerank/text-rerank",
         "api_key": "sk-your-dashscope-api-key",
         "provider": "aliyun"
+    }
+}'
+```
+
+**远程 Ollama 兼容重排（chat-based）**:
+
+```curl
+curl --location 'http://localhost:8080/api/v1/models' \
+--header 'Content-Type: application/json' \
+--header 'X-API-Key: your_api_key' \
+--data '{
+    "name": "dengcao/Qwen3-Reranker-4B:Q4_K_M",
+    "type": "Rerank",
+    "source": "remote",
+    "description": "Ollama chat-based Rerank 模型",
+    "parameters": {
+        "base_url": "http://192.168.1.126:11435",
+        "api_key": "",
+        "provider": "generic",
+        "interface_type": "ollama"
     }
 }'
 ```
@@ -439,7 +463,7 @@ curl --location --request DELETE 'http://localhost:8080/api/v1/models/8fdc464d-8
 | base_url             | string            | 否   | API 服务地址；远程模型必填，会经过 SSRF 校验               |
 | api_key              | string            | 否   | API 密钥；远程模型必填，存储时使用 AES-256 加密            |
 | provider             | string            | 否   | 服务商标识（见上方支持列表），用于选择特定的 API 适配器    |
-| interface_type       | string            | 否   | 接口风格标识（OpenAI 兼容请留空）                          |
+| interface_type       | string            | 否   | 接口风格标识；`openai` 走标准远程接口，`ollama` 走 Ollama `/api/chat` 兼容路径（当前主要用于自定义 Rerank） |
 | embedding_parameters | object            | 否   | Embedding 模型专用参数，见下方                             |
 | parameter_size       | string            | 否   | 模型参数规模（如 `7B`/`13B`/`70B`），通常由后端写入        |
 | extra_config         | object<string,string> | 否 | 服务商特定的额外配置                                       |

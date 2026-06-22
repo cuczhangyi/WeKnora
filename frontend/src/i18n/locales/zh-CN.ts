@@ -2723,7 +2723,9 @@ export default {
       downloadFailed: "{name} 下载失败",
       downloadStartFailed: "启动下载失败",
       ollamaUnavailable: "Ollama服务不可用，无法选择本地模型",
-      ollamaNotSupportRerank: "Ollama 不支持 ReRank 模型，请使用远程接口配置",
+      ollamaCompatible: "Ollama兼容接口",
+      ollamaRerankRemoteOnly: "ReRank 不支持 local source；如需使用 Ollama，请选择 remote 来源并将接口类型设为 Ollama 兼容接口",
+      rerankInterfaceTypeDesc: "默认按 OpenAI 兼容 `/rerank` 调用；当目标服务是 Ollama `/api/chat` 风格的重排代理时，切换为 Ollama 兼容接口",
       goToOllamaSettings: "查看设置",
       validation: {
         modelNameRequired: "请输入模型名称",

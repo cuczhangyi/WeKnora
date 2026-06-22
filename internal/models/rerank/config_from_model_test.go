@@ -14,6 +14,7 @@ func TestConfigFromModel(t *testing.T) {
 		Parameters: types.ModelParameters{
 			BaseURL:       "https://api.example.com/v1",
 			APIKey:        "sk-xxx",
+			InterfaceType: "ollama",
 			Provider:      "siliconflow",
 			ExtraConfig:   map[string]string{"flag": "on"},
 			CustomHeaders: map[string]string{"X-Gateway": "g"},
@@ -25,6 +26,9 @@ func TestConfigFromModel(t *testing.T) {
 	}
 	if cfg.Provider != "siliconflow" || cfg.CustomHeaders["X-Gateway"] != "g" {
 		t.Errorf("provider/headers not propagated: %+v", cfg)
+	}
+	if cfg.InterfaceType != "ollama" {
+		t.Errorf("interface type mismatch: %+v", cfg)
 	}
 	if cfg.AppID != "app" || cfg.AppSecret != "secret" {
 		t.Errorf("cloud creds mismatch: %+v", cfg)

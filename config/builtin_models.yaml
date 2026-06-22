@@ -1,0 +1,32 @@
+builtin_models:
+  - id: builtin-ollama-chat-default
+    name: qwen3:latest
+    type: KnowledgeQA
+    source: local
+    description: Remote Ollama chat model via OLLAMA_BASE_URL
+    is_default: true
+    parameters:
+      provider: generic
+
+  - id: builtin-ollama-embedding-default
+    name: bge-m3:latest
+    type: Embedding
+    source: local
+    description: Remote Ollama embedding model via OLLAMA_BASE_URL
+    is_default: true
+    parameters:
+      provider: generic
+      embedding_parameters:
+        dimension: 1024
+        truncate_prompt_tokens: 0
+
+  - id: builtin-ollama-rerank-default
+    name: dengcao/Qwen3-Reranker-4B:Q4_K_M
+    type: Rerank
+    source: remote
+    description: Ollama chat-based rerank model
+    is_default: true
+    parameters:
+      base_url: ${OLLAMA_BASE_URL}
+      provider: generic
+      interface_type: ollama

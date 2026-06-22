@@ -204,6 +204,18 @@ Once started, visit **http://localhost** to get started.
 
 > To use a local Ollama model, run `ollama serve > /dev/null 2>&1 &` first.
 
+### 🧪 Standard Local Development Workflow
+
+For the current local development baseline with Docker infrastructure, local backend/frontend, `Qdrant`, `MinIO`, Docker `DocReader`, remote Ollama, and ready-to-use VS Code debug configuration, follow:
+
+- [`docs/dev/local-dev-qdrant-minio-ollama.md`](./docs/dev/local-dev-qdrant-minio-ollama.md)
+
+The standard infrastructure bootstrap command is:
+
+```bash
+make dev-start DEV_ARGS="--qdrant --minio --no-langfuse"
+```
+
 ### 🔧 Optional Services (Docker Compose Profiles)
 
 Add `--profile` flags to enable additional components. Multiple profiles can be combined:
@@ -258,7 +270,7 @@ If you need to frequently modify code, **you don't need to rebuild Docker images
 
 ```bash
 # Start infrastructure
-make dev-start
+make dev-start DEV_ARGS="--qdrant --minio --no-langfuse"
 
 # Start backend (new terminal)
 make dev-app
@@ -266,6 +278,8 @@ make dev-app
 # Start frontend (new terminal)
 make dev-frontend
 ```
+
+For the full standard local-dev checklist, environment template, verification commands, and VS Code debug setup, see [`docs/dev/local-dev-qdrant-minio-ollama.md`](./docs/dev/local-dev-qdrant-minio-ollama.md).
 
 **Development Advantages:**
 - ✅ Frontend modifications auto hot-reload (no restart needed)

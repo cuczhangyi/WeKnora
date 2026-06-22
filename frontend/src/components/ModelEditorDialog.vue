@@ -85,10 +85,10 @@
             </button>
           </div>
 
-          <!-- ReRank模型不支持Ollama的提示信息 -->
+          <!-- ReRank 模型不支持 local source，但支持 remote + Ollama 兼容接口 -->
           <div v-if="activeModelType === 'rerank'" class="ollama-unavailable-tip rerank-tip">
             <t-icon name="info-circle-filled" class="tip-icon info" />
-            <span class="tip-text">{{ $t('model.editor.ollamaNotSupportRerank') }}</span>
+            <span class="tip-text">{{ $t('model.editor.ollamaRerankRemoteOnly') }}</span>
           </div>
 
           <!-- Ollama不可用时的提示信息 -->
@@ -171,6 +171,15 @@
                 </div>
               </t-option>
             </t-select>
+          </div>
+
+          <div v-if="showRerankInterfaceTypeField" class="form-item">
+            <label class="form-label">{{ $t('multimodal.interfaceType') }}</label>
+            <t-select v-model="formData.interfaceType" placeholder="">
+              <t-option value="openai" :label="$t('multimodal.openaiCompatible')" />
+              <t-option value="ollama" :label="$t('model.editor.ollamaCompatible')" />
+            </t-select>
+            <p class="form-desc">{{ $t('model.editor.rerankInterfaceTypeDesc') }}</p>
           </div>
 
           <!-- WeKnoraCloud 提示信息 -->
@@ -644,6 +653,12 @@ const showThinkingControlField = computed(() =>
   activeModelType.value === 'chat' && formData.value.source === 'remote',
 )
 
+const showRerankInterfaceTypeField = computed(() =>
+  activeModelType.value === 'rerank'
+  && formData.value.source === 'remote'
+  && formData.value.provider === 'generic',
+)
+
 const resolvedThinkingControl = (): ThinkingControlValue =>
   defaultThinkingControl(
     formData.value.provider || '',
@@ -816,7 +831,7 @@ const formData = ref<ModelFormData>({
   apiKey: '',
   dimension: undefined,
   supportsDimensionOverride: false,
-  interfaceType: 'ollama',
+  interfaceType: undefined,
   isDefault: false,
   supportsVision: false,
   thinkingControl: defaultThinkingControl('generic', ''),
@@ -945,6 +960,7 @@ const selectModelType = async (type: EditorModelType) => {
 
   if (type === 'rerank') {
     formData.value.source = 'remote'
+    formData.value.interfaceType = formData.value.interfaceType || 'openai'
   }
   if (type !== 'embedding') {
     formData.value.dimension = undefined
@@ -967,7 +983,7 @@ const selectModelType = async (type: EditorModelType) => {
     formData.value.provider = 'generic'
     formData.value.baseUrl = ''
   } else {
-    handleProviderChange(formData.value.provider)
+    handleProviderChange(formData.value.provider || 'generic')
   }
   if (showThinkingControlField.value && !isEdit.value) {
     thinkingControlManual.value = false
@@ -1023,6 +1039,7 @@ watch(() => props.visible, (val) => {
       // ReRank 模型强制使用 remote 来源（Ollama 不支持 ReRank）
       if (activeModelType.value === 'rerank') {
         formData.value.source = 'remote'
+        formData.value.interfaceType = formData.value.interfaceType || 'openai'
       }
 
       // 如果当前 provider 是 WeKnoraCloud，检查凭证状态
@@ -1056,7 +1073,7 @@ const resetForm = () => {
     apiKey: '',
     dimension: undefined, // 默认不填，让用户手动输入或通过检测按钮获取
     supportsDimensionOverride: false,
-    interfaceType: undefined,
+    interfaceType: activeModelType.value === 'rerank' ? 'openai' : undefined,
     isDefault: false,
     supportsVision: false,
     thinkingControl: defaultThinkingControl('generic', ''),
@@ -1091,6 +1108,11 @@ const handleProviderChange = (value: string) => {
     remoteChecked.value = false
     remoteAvailable.value = false
     remoteMessage.value = ''
+  }
+  if (activeModelType.value === 'rerank') {
+    formData.value.interfaceType = value === 'generic'
+      ? (formData.value.interfaceType || 'openai')
+      : 'openai'
   }
   // WeKnoraCloud: 检查凭证状态
   if (value === 'weknoracloud') {
@@ -1319,7 +1341,7 @@ const checkRemoteAPI = async () => {
         // 对话模型（KnowledgeQA）
         result = await checkRemoteModel({
           modelName: formData.value.modelName,
-          baseUrl: formData.value.baseUrl,
+          baseUrl: formData.value.baseUrl || '',
           apiKey: formData.value.apiKey || '',
           provider: formData.value.provider,
           ...idPayload,
@@ -1332,7 +1354,7 @@ const checkRemoteAPI = async () => {
         result = await testEmbeddingModel({
           source: 'remote',
           modelName: formData.value.modelName,
-          baseUrl: formData.value.baseUrl,
+          baseUrl: formData.value.baseUrl || '',
           apiKey: formData.value.apiKey || '',
           dimension: formData.value.dimension,
           supportsDimensionOverride: formData.value.supportsDimensionOverride ?? false,
@@ -1360,9 +1382,10 @@ const checkRemoteAPI = async () => {
           : {}
         result = await checkRerankModel({
           modelName: formData.value.modelName,
-          baseUrl: formData.value.baseUrl,
+          baseUrl: formData.value.baseUrl || '',
           apiKey: formData.value.apiKey || '',
           provider: formData.value.provider,
+          interfaceType: formData.value.interfaceType || 'openai',
           ...idPayload,
           ...headerPayload,
           ...lkeapExtra,
@@ -1375,7 +1398,7 @@ const checkRemoteAPI = async () => {
         // VLLM 使用 checkRemoteModel 进行基础连接测试
         result = await checkRemoteModel({
           modelName: formData.value.modelName,
-          baseUrl: formData.value.baseUrl,
+          baseUrl: formData.value.baseUrl || '',
           apiKey: formData.value.apiKey || '',
           provider: formData.value.provider,
           ...idPayload,
@@ -1387,7 +1410,7 @@ const checkRemoteAPI = async () => {
         // ASR 模型（语音识别）— 使用专用的 ASR 测试接口（/v1/audio/transcriptions）
         result = await checkASRModel({
           modelName: formData.value.modelName,
-          baseUrl: formData.value.baseUrl,
+          baseUrl: formData.value.baseUrl || '',
           apiKey: formData.value.apiKey || '',
           provider: formData.value.provider,
           ...idPayload,
