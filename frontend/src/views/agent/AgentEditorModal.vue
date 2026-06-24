@@ -1300,9 +1300,8 @@
                   </div>
                 </div>
 
-                <!-- 共享管理（仅编辑模式且非内置智能体） -->
-                <div v-if="editorMode === 'edit' && editorAgent?.id && !editorAgent?.is_builtin"
-                  v-show="currentSection === 'share'" class="section">
+                <!-- TODO: 接入外部登录系统后恢复 — 改 v-if/v-show 为原条件 -->
+                <div v-if="false" v-show="currentSection === 'share'" class="section">
                   <AgentShareSettings :agent-id="editorAgent.id" :agent="editorAgent" />
                 </div>
 
@@ -1392,7 +1391,8 @@ import { useEditorResourcesStore } from '@/stores/editorResources';
 import AgentAvatar from '@/components/AgentAvatar.vue';
 import PromptTemplateSelector from '@/components/PromptTemplateSelector.vue';
 import ModelSelector from '@/components/ModelSelector.vue';
-import AgentShareSettings from '@/components/AgentShareSettings.vue';
+// TODO: 接入外部登录系统后恢复
+// import AgentShareSettings from '@/components/AgentShareSettings.vue';
 import IMChannelPanel from '@/components/IMChannelPanel.vue';
 import AgentEmbedChannelPanel from '@/components/AgentEmbedChannelPanel.vue';
 import { getRootZoom, rectToCssPx } from '@/utils/zoom';
@@ -1847,9 +1847,10 @@ const navItems = computed(() => {
     items.push({ key: 'skills', icon: 'lightbulb', label: t('agent.editor.skillsConfig') });
   }
   // 发布与集成（仅编辑模式）
-  if (editorMode.value === 'edit' && editorAgent.value?.id && !editorAgent.value?.is_builtin && !authStore.isLiteMode) {
-    items.push({ key: 'share', icon: 'share', label: t('knowledgeEditor.sidebar.share') });
-  }
+  // TODO: 接入外部登录系统后恢复
+  // if (editorMode.value === 'edit' && editorAgent.value?.id && !editorAgent.value?.is_builtin && !authStore.isLiteMode) {
+  //   items.push({ key: 'share', icon: 'share', label: t('knowledgeEditor.sidebar.share') });
+  // }
   if (editorMode.value === 'edit' && editorAgent.value?.id) {
     items.push({ key: 'im', icon: 'chat-message', label: t('agentEditor.im.title') });
     items.push({ key: 'embed', icon: 'internet', label: t('agentEditor.embed.title') });
@@ -1881,7 +1882,8 @@ const navGroups = computed(() => {
     {
       key: 'integration',
       label: t('agentEditor.navGroups.integration'),
-      items: pickItems(['share', 'im', 'embed']),
+      // TODO: 接入外部登录系统后恢复 — 把 'share' 加回 pickItems 数组
+      items: pickItems(['im', 'embed']),
     },
   ].filter((group) => group.items.length > 0);
 });

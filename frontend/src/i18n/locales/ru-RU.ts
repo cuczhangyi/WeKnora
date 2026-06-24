@@ -48,12 +48,12 @@ export default {
     reopen: 'Обучение',
     steps: {
       welcome: {
-        title: 'Добро пожаловать в WeKnora',
+        title: 'Добро пожаловать в 元数云',
         desc: 'Несколько простых шагов познакомят вас с базами знаний, чатом и агентами. Нажмите «Далее», чтобы начать.',
       },
       knowledge: {
         title: 'Создайте базу знаний',
-        desc: 'С этого всё начинается: загружайте документы, веб-страницы или FAQ, и WeKnora автоматически разберёт и проиндексирует их. Нажмите здесь, чтобы открыть базы знаний.',
+        desc: 'С этого всё начинается: загружайте документы, веб-страницы или FAQ, и 元数云 автоматически разберёт и проиндексирует их. Нажмите здесь, чтобы открыть базы знаний.',
       },
       chat: {
         title: 'Начните чат с ИИ',
@@ -1089,37 +1089,37 @@ export default {
       desc: 'Ваша роль не позволяет открыть этот раздел настроек. Обратитесь к администратору арендатора, чтобы запросить нужную роль.',
     },
     weknoraCloud: {
-      title: 'WeKnora Cloud',
-      description: 'Настройте учётные данные APPID и APPSECRET для WeKnora Cloud. Данные используются для модельных сервисов и движка парсинга документов.',
+      title: '元数云 Cloud',
+      description: 'Настройте учётные данные APPID и APPSECRET для 元数云 Cloud. Данные используются для модельных сервисов и движка парсинга документов.',
       viewDocs: 'Документация',
       unconfigured: 'Учётные данные не настроены. Заполните APPID и APPSECRET.',
       configured: 'Учётные данные настроены, статус в норме.',
-      expired: 'Учётные данные WeKnora Cloud истекли',
+      expired: 'Учётные данные 元数云 Cloud истекли',
       expiredDefault: 'Ключ шифрования изменился после перезапуска. Сохранённые данные не могут быть расшифрованы. Введите данные заново.',
       reconfigure: 'Перенастроить',
       appIdLabel: 'APPID',
-      appIdDesc: 'ID приложения WeKnora Cloud',
+      appIdDesc: 'ID приложения 元数云 Cloud',
       appIdPlaceholder: 'Введите APPID',
       appSecretLabel: 'APPSECRET',
-      appSecretDesc: 'Секрет приложения WeKnora Cloud',
+      appSecretDesc: 'Секрет приложения 元数云 Cloud',
       appSecretPlaceholder: 'Введите APPSECRET',
       saveHint: 'Данные будут проверены и зашифрованы перед сохранением.',
       saveBtn: 'Сохранить',
       usageTitle: 'Инструкция',
-      usageSteps: '1. Сохраните APPID и APPSECRET\n2. Добавьте chat, embedding, rerank и vlm в разделе «Облачные модели» ниже\n3. Парсинг: Настройки БЗ → Движок парсинга → WeKnora Cloud',
+      usageSteps: '1. Сохраните APPID и APPSECRET\n2. Добавьте chat, embedding, rerank и vlm в разделе «Облачные модели» ниже\n3. Парсинг: Настройки БЗ → Движок парсинга → 元数云 Cloud',
       fillRequired: 'Заполните APPID и APPSECRET',
       saveSuccess: 'Учётные данные сохранены',
       saveFailed: 'Не удалось сохранить данные',
-      credentialConfigured: 'Учётные данные WeKnoraCloud настроены.',
+      credentialConfigured: 'Учётные данные 元数云Cloud настроены.',
       credentialExpired: 'Данные истекли. Перенастройте.',
-      credentialUnconfigured: 'Учётные данные WeKnoraCloud не настроены. Заполните APPID и APPSECRET.',
+      credentialUnconfigured: 'Учётные данные 元数云Cloud не настроены. Заполните APPID и APPSECRET.',
       checkingStatus: 'Проверка статуса...',
       goToSettings: 'Перейти в настройки',
-      modelHintConfigured: 'Учётные данные WeKnoraCloud настроены. Поддерживаемые модели см. в',
+      modelHintConfigured: 'Учётные данные 元数云Cloud настроены. Поддерживаемые модели см. в',
       modelHintDocsLink: 'документации API',
       modelsSection: {
         title: 'Облачные модели',
-        descReady: 'Зарегистрируйте четыре стандартные модели WeKnora Cloud для чата, поиска, реранкинга и зрения.',
+        descReady: 'Зарегистрируйте четыре стандартные модели 元数云 Cloud для чата, поиска, реранкинга и зрения.',
         descPending: 'Сначала сохраните учётные данные выше, затем добавьте модели здесь.',
         statusAdded: 'Добавлена',
         statusPending: 'Нужны учётные данные',
@@ -1135,10 +1135,10 @@ export default {
       addModelsFailed: 'Не удалось добавить модели',
       addModelsEmbeddingFailed: 'Тест подключения Embedding не пройден; не удалось определить размерность вектора',
       addModelsDisplayName: {
-        chat: 'WeKnoraCloud Chat',
-        embedding: 'WeKnoraCloud Embedding',
-        rerank: 'WeKnoraCloud ReRank',
-        vllm: 'WeKnoraCloud Vision',
+        chat: '元数云Cloud Chat',
+        embedding: '元数云Cloud Embedding',
+        rerank: '元数云Cloud ReRank',
+        vllm: '元数云Cloud Vision',
       },
     },
     system: 'Настройки системы',
@@ -1534,7 +1534,7 @@ export default {
   },
   initialization: {
     title: 'Инициализация',
-    welcome: 'Добро пожаловать в WeKnora',
+    welcome: 'Добро пожаловать в 元数云',
     description: 'Пожалуйста, настройте систему перед началом работы',
     step1: 'Шаг 1: Настройка LLM модели',
     step2: 'Шаг 2: Настройка модели встраивания',
@@ -1756,7 +1756,7 @@ export default {
     backToLogin: 'Вернуться ко входу',
     registerNow: 'Зарегистрироваться',
     loginHint: 'Войдите, чтобы продолжить, или создайте аккаунт ниже, если вы впервые здесь.',
-    firstTime: 'Впервые в WeKnora?',
+    firstTime: 'Впервые в 元数云?',
     registerSuccess: 'Регистрация успешна! Система создала для вас эксклюзивного арендатора, пожалуйста, войдите',
     registerFailed: 'Ошибка регистрации',
     subtitle: 'RAG, ReAct-агент и Wiki — корпоративный фреймворк знаний на основе больших моделей',
@@ -2115,6 +2115,19 @@ export default {
         ssrf: {
           whitelist: 'Белый список SSRF-защиты',
         },
+        // Ключи в области тенантов (Category: "tenant").
+        // - max_owned_per_user: ограничение на количество тенантов, которые
+        //   один не-суперпользователь может создать и владеть через
+        //   самообслуживание. >0 — лимит, 0 — fallback к встроенному
+        //   значению по умолчанию (10), <0 — лимит снят полностью
+        //   (не рекомендуется для публичных развёртываний).
+        //   Читается при каждом запросе создания — перезапуск не нужен.
+        // - default_storage_quota_gb: квота хранилища (ГБ) для новых
+        //   тенантов. >0 — это значение, <=0 — fallback к встроенному
+        //   значению по умолчанию (10 ГБ). Читается только в момент
+        //   создания; существующие тенанты не пересчитываются задним
+        //   числом. Кнопка «Применить ко всем существующим тенантам»
+        //   в строке — явный способ массовой перезаписи.
         tenant: {
           max_owned_per_user: 'Максимум тенантов на пользователя',
           default_storage_quota_gb: 'Квота хранилища для новых тенантов по умолчанию (ГБ)',
@@ -2534,7 +2547,7 @@ export default {
     builtinTag: 'Built-in'
   },
   createChat: {
-    title: 'Привет, я WeKnora — ваши знания всегда под рукой',
+    title: 'Привет, я 元数云 — ваши знания всегда под рукой',
     newSessionTitle: 'Новая сессия',
     messages: {
       selectKnowledgeBase: 'Сначала выберите базу знаний',
@@ -4371,8 +4384,8 @@ export default {
           desc: 'PaddleOCR-VL Cloud API',
         },
         weknoracloud: {
-          name: 'WeKnora Cloud',
-          desc: 'Парсинг документов через WeKnora Cloud',
+          name: '元数云 Cloud',
+          desc: 'Парсинг документов через 元数云 Cloud',
         },
         markitdown: {
           name: 'MarkItDown',

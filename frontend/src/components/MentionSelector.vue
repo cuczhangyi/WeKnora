@@ -347,7 +347,7 @@ const scrollToItem = (index: number) => {
 
 .mention-item.active {
   background: var(--td-brand-color-light, #e9f8ec);
-  color: var(--td-brand-color, #07c05f);
+  color: var(--td-brand-color, #1890ff);
 }
 
 .icon-wrap {
@@ -598,7 +598,7 @@ const scrollToItem = (index: number) => {
   transition: color 0.2s, text-decoration-color 0.2s;
 }
 .mention-detail-content .detail-value.clickable:hover {
-  color: var(--td-brand-color, #07c05f);
-  text-decoration-color: var(--td-brand-color, #07c05f);
+  color: var(--td-brand-color, #1890ff);
+  text-decoration-color: var(--td-brand-color, #1890ff);
 }
 </style>

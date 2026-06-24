@@ -807,7 +807,7 @@ onMounted(loadAll)
 .engine-card--builtin .engine-card__badge,
 .engine-card--weknoracloud .engine-card__badge {
   background: rgba(7, 192, 95, 0.12);
-  color: #07C05F;
+  color: #1890FF;
 }
 .engine-card--simple .engine-card__badge {
   background: rgba(70, 70, 70, 0.1);
@@ -1156,7 +1156,7 @@ onMounted(loadAll)
 .parser-engine-drawer--builtin .setting-drawer__header-icon,
 .parser-engine-drawer--weknoracloud .setting-drawer__header-icon {
   background: rgba(7, 192, 95, 0.12);
-  color: #07C05F;
+  color: #1890FF;
 }
 .parser-engine-drawer--simple .setting-drawer__header-icon {
   background: rgba(70, 70, 70, 0.1);

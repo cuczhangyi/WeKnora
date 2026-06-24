@@ -365,8 +365,8 @@
                   <DataSourceSettings :kb-id="kbId" @count="dsCount = $event" />
                 </div>
 
-                <!-- 共享设置（仅编辑模式） -->
-                <div v-if="mode === 'edit' && kbId && currentSection === 'share'" class="section">
+                <!-- TODO: 接入外部登录系统后恢复 — 改 v-if 为当前条件 -->
+                <div v-if="false" class="section">
                   <KBShareSettings :kb-id="kbId" :can-share="canShareKB" />
                 </div>
               </div>
@@ -411,7 +411,8 @@ import KBVectorStoreSettings from './settings/KBVectorStoreSettings.vue'
 import KBAdvancedSettings from './settings/KBAdvancedSettings.vue'
 import ModelSelector from '@/components/ModelSelector.vue'
 import GraphSettings from './settings/GraphSettings.vue'
-import KBShareSettings from './settings/KBShareSettings.vue'
+// TODO: 接入外部登录系统后恢复
+// import KBShareSettings from './settings/KBShareSettings.vue'
 import DataSourceSettings from './settings/DataSourceSettings.vue'
 import { useI18n } from 'vue-i18n'
 
@@ -546,9 +547,10 @@ const navItems = computed(() => {
       items.push({ key: 'datasource', icon: 'cloud-download', label: t('knowledgeEditor.sidebar.datasource'), badge: dsCount.value || undefined })
     }
   }
-  if (props.mode === 'edit' && props.kbId && !authStore.isLiteMode) {
-    items.push({ key: 'share', icon: 'share', label: t('knowledgeEditor.sidebar.share') })
-  }
+  // TODO: 接入外部登录系统后恢复
+  // if (props.mode === 'edit' && props.kbId && !authStore.isLiteMode) {
+  //   items.push({ key: 'share', icon: 'share', label: t('knowledgeEditor.sidebar.share') })
+  // }
   return items
 })
 
@@ -576,7 +578,8 @@ const navGroups = computed(() => {
     {
       key: 'integration',
       label: t('knowledgeEditor.navGroups.integration'),
-      items: pickItems(['share']),
+      // TODO: 接入外部登录系统后恢复 — 把 'share' 加回数组
+      items: pickItems([]),
     },
   ].filter((group) => group.items.length > 0)
 })

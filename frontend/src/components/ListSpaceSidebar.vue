@@ -32,12 +32,8 @@
             <span class="icon-label">{{ workspaceLabel }}</span>
           </div>
         </t-tooltip>
-        <!-- Shared spaces group: per-org/space entries only. We dropped
-             the aggregate "协作" / shared-with-me entry — its meaning
-             oscillated between "everything shared to me" and "things I
-             can edit", and either reading duplicated information already
-             visible on the per-space entries below. -->
-        <template v-if="organizationsWithCount.length">
+        <!-- TODO: 恢复时把 v-if 改回 organizationsWithCount.length -->
+        <template v-if="false">
           <div class="icon-strip-divider" />
           <t-tooltip v-for="org in organizationsWithCount" :key="org.id"
             :content="tooltipText(org.name, getOrgCount(org.id))" placement="right" :show-arrow="false">
@@ -108,9 +104,8 @@
           </div>
           <span v-if="countMine !== undefined" class="item-count">{{ countMine }}</span>
         </div>
-        <!-- Shared spaces group — per-org entries only; the aggregate
-             entry was removed (see collapsed strip for rationale). -->
-        <template v-if="organizationsWithCount.length">
+        <!-- TODO: 恢复时把 v-if 改回 organizationsWithCount.length -->
+        <template v-if="false">
           <div class="sidebar-section">
             <span class="section-title">{{ $t('listSpaceSidebar.spaces') }}</span>
           </div>
@@ -157,6 +152,14 @@ import { Icon as TIcon } from 'tdesign-vue-next'
 import SpaceAvatar from './SpaceAvatar.vue'
 import { useOrganizationStore } from '@/stores/organization'
 
+// TODO: 恢复"共享空间"入口时同步启用下方整条死链:
+//   - SpaceAvatar import(上方)
+//   - useOrganizationStore import(上方) + orgStore(下方脚本) +
+//     organizations / organizationsWithCount 计算属性
+//   - truncateLabel 函数
+//   - getOrgCount 函数
+//   - onMounted 里 orgStore.fetchOrganizations() 调用
+// 配合上方模板里两处 HTML 注释块(折叠态 + 展开态)同时取消注释即可。
 const COLLAPSED_WIDTH = 56
 const EXPANDED_WIDTH = 208
 const SNAP_THRESHOLD = 120

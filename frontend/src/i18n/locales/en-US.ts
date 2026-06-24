@@ -48,12 +48,12 @@ export default {
     reopen: 'Product tour',
     steps: {
       welcome: {
-        title: 'Welcome to WeKnora',
+        title: 'Welcome to 元数云',
         desc: 'A few quick steps to get you familiar with knowledge bases, chat and agents. Click "Next" to begin.',
       },
       knowledge: {
         title: 'Create your knowledge base',
-        desc: 'Everything starts here: upload documents, web pages or FAQs and WeKnora parses and indexes them automatically. Click here to open knowledge bases.',
+        desc: 'Everything starts here: upload documents, web pages or FAQs and 元数云 parses and indexes them automatically. Click here to open knowledge bases.',
       },
       chat: {
         title: 'Start an AI chat',
@@ -1176,37 +1176,37 @@ export default {
       desc: "Your role can't access this settings page. Ask an admin of this tenant to grant the required role.",
     },
     weknoraCloud: {
-      title: 'WeKnora Cloud',
-      description: 'Configure WeKnora Cloud APPID and APPSECRET credentials. Credentials are used for model services and document parsing engine.',
+      title: '元数云 Cloud',
+      description: 'Configure 元数云 Cloud APPID and APPSECRET credentials. Credentials are used for model services and document parsing engine.',
       viewDocs: 'View Docs',
       unconfigured: 'Credentials not configured. Please fill in APPID and APPSECRET.',
       configured: 'Credentials configured and working.',
-      expired: 'WeKnora Cloud credentials expired',
+      expired: '元数云 Cloud credentials expired',
       expiredDefault: 'Encryption key changed after service restart. Saved credentials cannot be decrypted. Please re-enter credentials.',
       reconfigure: 'Reconfigure',
       appIdLabel: 'APPID',
-      appIdDesc: 'WeKnora Cloud application ID',
+      appIdDesc: '元数云 Cloud application ID',
       appIdPlaceholder: 'Enter APPID',
       appSecretLabel: 'APPSECRET',
-      appSecretDesc: 'WeKnora Cloud application secret',
+      appSecretDesc: '元数云 Cloud application secret',
       appSecretPlaceholder: 'Enter APPSECRET',
       saveHint: 'Credentials will be validated and encrypted before saving.',
       saveBtn: 'Save Credentials',
       usageTitle: 'Usage Guide',
-      usageSteps: '1. Save APPID and APPSECRET\n2. Register chat, embedding, rerank, and vlm in Cloud Models below\n3. Parser: Knowledge Base Settings → Parser Engine → WeKnora Cloud',
+      usageSteps: '1. Save APPID and APPSECRET\n2. Register chat, embedding, rerank, and vlm in Cloud Models below\n3. Parser: Knowledge Base Settings → Parser Engine → 元数云 Cloud',
       fillRequired: 'Please fill in APPID and APPSECRET',
       saveSuccess: 'Credentials saved successfully',
       saveFailed: 'Failed to save credentials',
-      credentialConfigured: 'WeKnoraCloud credentials configured.',
+      credentialConfigured: '元数云Cloud credentials configured.',
       credentialExpired: 'Credentials expired. Please reconfigure.',
-      credentialUnconfigured: 'WeKnoraCloud credentials not configured. Please set up APPID and APPSECRET first.',
+      credentialUnconfigured: '元数云Cloud credentials not configured. Please set up APPID and APPSECRET first.',
       checkingStatus: 'Checking credential status...',
       goToSettings: 'Go to Settings',
-      modelHintConfigured: 'WeKnoraCloud credentials configured. See supported models in',
+      modelHintConfigured: '元数云Cloud credentials configured. See supported models in',
       modelHintDocsLink: 'API docs',
       modelsSection: {
         title: 'Cloud Models',
-        descReady: 'Register the four standard WeKnora Cloud models for chat, retrieval, reranking, and vision.',
+        descReady: 'Register the four standard 元数云 Cloud models for chat, retrieval, reranking, and vision.',
         descPending: 'Save credentials above before adding cloud models here.',
         statusAdded: 'Added',
         statusPending: 'Credentials required',
@@ -1222,10 +1222,10 @@ export default {
       addModelsFailed: 'Failed to add models',
       addModelsEmbeddingFailed: 'Embedding connection test failed; could not detect vector dimension',
       addModelsDisplayName: {
-        chat: 'WeKnoraCloud Chat',
-        embedding: 'WeKnoraCloud Embedding',
-        rerank: 'WeKnoraCloud ReRank',
-        vllm: 'WeKnoraCloud Vision',
+        chat: '元数云Cloud Chat',
+        embedding: '元数云Cloud Embedding',
+        rerank: '元数云Cloud ReRank',
+        vllm: '元数云Cloud Vision',
       },
     },
     system: 'System Settings',
@@ -1624,7 +1624,7 @@ export default {
   },
   initialization: {
     title: 'Initialization',
-    welcome: 'Welcome to WeKnora',
+    welcome: 'Welcome to 元数云',
     description: 'Please configure the system before starting',
     step1: 'Step 1: Configure LLM Model',
     step2: 'Step 2: Configure Embedding Model',
@@ -1885,7 +1885,7 @@ export default {
     backToLogin: 'Back to Login',
     registerNow: 'Register Now',
     loginHint: 'Sign in to continue, or create an account below if this is your first time.',
-    firstTime: 'New to WeKnora?',
+    firstTime: 'New to 元数云?',
     registerSuccess: 'Registration successful! The system has created an exclusive tenant for you, please login',
     registerFailed: 'Registration failed',
     subtitle: 'RAG Q&A, ReAct Agent and Wiki — an LLM-powered enterprise knowledge framework',
@@ -2162,7 +2162,7 @@ export default {
     goToAgentSettings: 'Go to agent settings'
   },
   createChat: {
-    title: 'Hi, I am WeKnora — your knowledge, within reach',
+    title: 'Hi, I am 元数云 — your knowledge, within reach',
     newSessionTitle: 'New Session',
     messages: {
       selectKnowledgeBase: 'Please select a knowledge base first',
@@ -2391,9 +2391,9 @@ export default {
     allowFileUploadDesc: 'When enabled, visitors can upload images and document attachments. Requires the bound agent to support image upload.',
     webhookUrl: 'Webhook URL',
     webhookUrlPlaceholder: 'https://your-server.example.com/weknora/embed-events',
-    webhookUrlDesc: 'Optional. WeKnora POSTs message_sent / message_received events to this HTTPS endpoint.',
+    webhookUrlDesc: 'Optional. 元数云 POSTs message_sent / message_received events to this HTTPS endpoint.',
     webhookSecret: 'Webhook secret',
-    webhookSecretPlaceholder: 'HMAC-SHA256 secret (X-WeKnora-Signature header)',
+    webhookSecretPlaceholder: 'HMAC-SHA256 secret (X-元数云-Signature header)',
     webhookSecretKeep: 'Leave blank to keep the saved secret',
     webhookSecretDesc: 'Optional. When set, request bodies are signed for verification on your server.',
     secureModeDocHint: 'See docs/embed-secure-mode.md for the full integration guide',
@@ -3369,6 +3369,18 @@ export default {
         ssrf: {
           whitelist: 'SSRF protection allowlist',
         },
+        // Tenant-scoped keys (Category: "tenant").
+        // - max_owned_per_user: cap on how many tenants a single
+        //   non-superuser can create and own via self-service. >0
+        //   enforces the cap, 0 falls back to the in-code default (10),
+        //   <0 disables the cap entirely (not recommended on public
+        //   deployments). Read on every create request — no restart.
+        // - default_storage_quota_gb: default storage quota (GB) for
+        //   newly-created tenants. >0 is the quota, <=0 falls back to
+        //   the in-code default (10 GB). Read at create time only;
+        //   does NOT retroactively resize existing tenants. The
+        //   inline "Apply to all existing tenants" button on the row
+        //   is the explicit bulk-rewrite affordance.
         tenant: {
           max_owned_per_user: 'Max tenants owned per user',
           default_storage_quota_gb: 'Default storage quota for new tenants (GB)',
@@ -4855,8 +4867,8 @@ export default {
           desc: 'PaddleOCR-VL Cloud API',
         },
         weknoracloud: {
-          name: 'WeKnora Cloud',
-          desc: 'Document parsing via WeKnora Cloud',
+          name: '元数云 Cloud',
+          desc: 'Document parsing via 元数云 Cloud',
         },
         markitdown: {
           name: 'MarkItDown',

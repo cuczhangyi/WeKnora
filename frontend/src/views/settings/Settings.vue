@@ -153,8 +153,8 @@
                     <TenantInfo />
                   </div>
 
-                  <!-- 成员管理 (#1303 PR 3) -->
-                  <div v-if="currentSection === 'members'" class="section">
+                  <!-- TODO: 接入外部登录系统后恢复 — 改 v-if 为 true -->
+                  <div v-if="false" class="section">
                     <TenantMembers />
                   </div>
 
@@ -276,7 +276,7 @@ const navItems = computed(() => {
   const all: NavItem[] = [
     { key: 'general', icon: 'setting', label: t('general.title') },
     { key: 'ollama', icon: 'server', label: 'Ollama' },
-    { key: 'weknoracloud', icon: '', label: 'WeKnora Cloud' },
+    { key: 'weknoracloud', icon: '', label: '元数云 Cloud' },
     { key: 'models', icon: 'control-platform', label: t('settings.modelManagement') },
     { key: 'websearch', icon: 'search', label: t('settings.webSearchConfig') },
     { key: 'chathistory', icon: 'chat', label: t('chatHistorySettings.title') },
@@ -288,7 +288,7 @@ const navItems = computed(() => {
     { key: 'system-global', icon: 'server', label: '系统设置' },
     { key: 'userprofile', icon: 'user', label: t('userProfile.title') },
     { key: 'tenant', icon: 'user-circle', label: t('settings.tenantInfo') },
-    { key: 'members', icon: 'usergroup', label: t('tenantMember.title') },
+    // TODO: 接入外部登录系统后恢复 — { key: 'members', icon: 'usergroup', label: t('tenantMember.title') },
     { key: 'api', icon: 'secured', label: t('settings.apiInfo') },
   ]
   // currentTenantRole 为空表示「membership 还没加载」—— 比起渲染整套

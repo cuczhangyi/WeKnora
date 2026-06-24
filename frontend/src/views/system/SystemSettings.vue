@@ -82,7 +82,7 @@
       <t-loading :text="t('system.globalSettings.loading')" />
     </div>
 
-    <div v-else-if="settings.length === 0" class="empty-state">
+    <div v-else-if="visibleSettings.length === 0" class="empty-state">
       <t-icon name="info-circle" size="24px" />
       <span>{{ t('system.globalSettings.empty') }}</span>
     </div>
@@ -141,9 +141,15 @@
         helping discovery; if it grows past ~10 keys we'll bring back
         grouping with a real visual treatment instead of a tiny caps
         label.
+
+        HIDDEN_KEYS is the temporary off-switch for keys the operator
+        doesn't need on this page (see the const declaration for the
+        list). We filter them out at the computed level so their
+        `setting-row` is never rendered, but they still flow through
+        loadSettings() and the API — nothing about the backend changes.
       -->
       <div
-        v-for="item in settings"
+        v-for="item in visibleSettings"
         :key="item.key"
         class="setting-row"
       >
@@ -538,6 +544,29 @@ function isHighRiskKey(key: string): boolean {
   return HIGH_RISK_KEYS.has(key)
 }
 
+// Keys hidden from this view. The backend registry still carries them
+// (they ship with the in-code defaults of 10 tenants / 10 GB quota and
+// the env vars WEKNORA_TENANT_MAX_OWNED_PER_USER /
+// WEKNORA_TENANT_DEFAULT_STORAGE_QUOTA_GB keep working exactly as
+// before) — we just don't expose them as a configurable row on this
+// page. Add/remove from this set is the entire knob for re-surfacing
+// them; no template branches or handler code need to change.
+const HIDDEN_KEYS = new Set<string>([
+  'tenant.max_owned_per_user',
+  'tenant.default_storage_quota_gb',
+])
+
+function isHiddenKey(key: string): boolean {
+  return HIDDEN_KEYS.has(key)
+}
+
+// Settings after HIDDEN_KEYS are stripped. Computed (not a function
+// called inline) so Vue can cache the array and only re-filter when
+// `settings` actually changes — keeps the v-for diffing cheap.
+const visibleSettings = computed(() =>
+  settings.value.filter((s) => !HIDDEN_KEYS.has(s.key)),
+)
+
 type PopconfirmBtn = { content: string; theme?: 'primary' | 'danger' | 'warning' }
 
 // TDesign popconfirm defaults to trigger:click on its inner Popup. Inputs
@@ -907,6 +936,52 @@ function highRiskConfirmBody(item: SystemSettingItem, value: unknown): string {
     value: renderedValue,
   })
 }
+
+// ---- Tenant-scoped settings -----------------------------------------------
+//
+// The registry carries two keys under the `tenant.*` namespace
+// (Category: "tenant" in service/system_setting.go). They are
+// currently filtered out of this view by HIDDEN_KEYS above (the
+// deployment at hand doesn't need them on this page); the comments
+// below remain as the spec of what they'd do if re-enabled, and so a
+// future maintainer doesn't have to dig through the Go registry to
+// recover the semantics. They would render through the standard
+// int-input path above — no separate template branch — but their
+// semantics differ from the generic int rows:
+//
+//   tenant.max_owned_per_user
+//     Cap on how many tenants a single non-superuser can create and
+//     own via self-service POST /tenants. Read on every create request,
+//     so UI edits take effect immediately (no restart required).
+//       value >  0  → cap = value
+//       value == 0  → fall back to the in-code default (10)
+//       value <  0  → disable the cap entirely. NOT recommended on
+//                      public-facing deployments — a determined caller
+//                      can still fill storage by spinning up empty
+//                      tenants, so the cap exists for a reason.
+//     No extra UI affordance; the row is just an InputNumber.
+//
+//   tenant.default_storage_quota_gb
+//     Default storage quota in GB applied to a newly-created tenant
+//     when the caller doesn't specify one explicitly. Read at create
+//     time only — changing the value does NOT retroactively resize
+//     already-existing tenants (they keep the quota stored on their
+//     row at creation; admins edit individual tenants via the
+//     tenant-update path).
+//       value >  0  → quota = value (GB)
+//       value <= 0  → fall back to the in-code default (10 GB)
+//     The row gets the inline "应用到所有现有租户" button via
+//     hasBulkAction() below — the explicit escape hatch for
+//     "rewrite every existing tenant's quota at once". Auto-cascading
+//     on save was deliberately rejected so a SystemAdmin tweaking the
+//     default while triaging a single new tenant can't accidentally
+//     clobber quotas that were individually tuned in production.
+//
+// The `tenant.` prefix is the only thing tying the two keys together —
+// there's no shared code path beyond the namespace. If a third
+// tenant-scoped key lands here we'd revisit whether to surface them as
+// a labelled group in the UI; at two items a section header adds visual
+// noise without helping discovery.
 
 // hasBulkAction tells the template whether the current row carries an
 // extra "apply to existing data" action beyond plain save/reset.

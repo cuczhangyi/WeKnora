@@ -691,8 +691,8 @@
       :kb-id="uiStore.currentKBId || undefined" :initial-type="uiStore.kbEditorType"
       @update:visible="(val) => val ? null : uiStore.closeKBEditor()" @success="handleKBEditorSuccess" />
 
-    <!-- 共享知识库对话框 -->
-    <ShareKnowledgeBaseDialog v-model:visible="shareDialogVisible" :knowledge-base-id="sharingKbId"
+    <!-- TODO: 接入外部登录系统后恢复 -->
+    <ShareKnowledgeBaseDialog v-if="false" v-model:visible="shareDialogVisible" :knowledge-base-id="sharingKbId"
       :knowledge-base-name="sharingKbName" @shared="handleShareSuccess" />
 
     <!-- 右侧：共享知识库详情面板 -->
@@ -780,7 +780,8 @@ import { useOrganizationStore } from '@/stores/organization'
 import { listOrganizationSharedKnowledgeBases, type SharedKnowledgeBase, type OrganizationSharedKnowledgeBaseItem, type SourceFromAgentInfo } from '@/api/organization'
 import { mergeAllScopeKnowledgeBases, type OwnedKnowledgeBase, type SharedKnowledgeBaseLike } from './kbListMerge'
 import KnowledgeBaseEditorModal from './KnowledgeBaseEditorModal.vue'
-import ShareKnowledgeBaseDialog from '@/components/ShareKnowledgeBaseDialog.vue'
+// TODO: 接入外部登录系统后恢复
+// import ShareKnowledgeBaseDialog from '@/components/ShareKnowledgeBaseDialog.vue'
 import ListSpaceSidebar from '@/components/ListSpaceSidebar.vue'
 import ResourceOriginBadge from '@/components/ResourceOriginBadge.vue'
 import ContextualGuide from '@/components/ContextualGuide.vue'
@@ -865,10 +866,11 @@ const uploadCleanupTimers = new Map<string, ReturnType<typeof setTimeout>>()
 let uploadRefreshTimer: ReturnType<typeof setTimeout> | null = null
 const UPLOAD_CLEANUP_DELAY = 10000
 
-// Share dialog state
-const shareDialogVisible = ref(false)
-const sharingKbId = ref('')
-const sharingKbName = ref('')
+// TODO: 接入外部登录系统后恢复
+// // Share dialog state
+// const shareDialogVisible = ref(false)
+// const sharingKbId = ref('')
+// const sharingKbName = ref('')
 
 // Shared knowledge bases (everything cross-tenant shared to me, including
 // viewer-only). Used by the per-space views and the "all" aggregate so
@@ -1404,18 +1406,17 @@ const handleTogglePinById = async (id: string) => {
   }
 }
 
-const handleShare = (kb: KB) => {
-  // 手动关闭弹窗
-  kb.showMore = false
-  sharingKbId.value = kb.id
-  sharingKbName.value = kb.name
-  shareDialogVisible.value = true
-}
+// TODO: 接入外部登录系统后恢复
+// const handleShare = (kb: KB) => {
+//   kb.showMore = false
+//   sharingKbId.value = kb.id
+//   sharingKbName.value = kb.name
+//   shareDialogVisible.value = true
+// }
 
-const handleShareSuccess = () => {
-  // 共享成功后可刷新列表
-  fetchList(true)
-}
+// const handleShareSuccess = () => {
+//   fetchList(true)
+// }
 
 const handleSharedKbClick = (sharedKb: SharedKnowledgeBase) => {
   pins.touchRecent('kb', sharedKb.knowledge_base.id)

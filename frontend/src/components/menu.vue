@@ -49,8 +49,9 @@
             </div>
         </t-tooltip>
 
-        <!-- 租户选择器：仅在用户可切换租户时显示 -->
+        <!-- TODO: 恢复"共享空间"入口时取消下面 1 行注释(侧栏 TenantSelector)
         <TenantSelector v-if="canAccessAllTenants && !uiStore.sidebarCollapsed" />
+        -->
 
         <!-- 折叠时右侧拖拽展开手柄 -->
         <div v-if="uiStore.sidebarCollapsed" class="sidebar-drag-handle" @mousedown="onDragHandleMouseDown" />
@@ -279,7 +280,8 @@ import { useUIStore } from '@/stores/ui';
 import { useCommandPaletteStore } from '@/stores/commandPalette';
 import { MessagePlugin, DialogPlugin, Icon as TIcon } from "tdesign-vue-next";
 import UserMenu from '@/components/UserMenu.vue';
-import TenantSelector from '@/components/TenantSelector.vue';
+// TODO: 恢复"共享空间"入口时取消下面 1 行注释
+// import TenantSelector from '@/components/TenantSelector.vue';
 import { useI18n } from 'vue-i18n';
 import { getSystemInfo } from '@/api/system';
 

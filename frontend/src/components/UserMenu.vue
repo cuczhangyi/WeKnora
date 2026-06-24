@@ -66,7 +66,8 @@
               <span>{{ currentRoleLabel }}</span>
             </div>
           </div>
-          <t-icon v-if="showTenantSwitcher" name="swap" class="dropdown-tenant-panel-trail"
+          <!-- TODO: 恢复时把 v-if 改回 showTenantSwitcher -->
+          <t-icon v-if="false" name="swap" class="dropdown-tenant-panel-trail"
             :title="$t('tenant.switcher.menuLabel')" />
         </div>
         <div class="menu-divider"></div>
@@ -74,7 +75,8 @@
              分别对应 viewer/viewer/admin/admin/owner（详情见 Settings.vue 的
              SECTION_MIN_ROLE）。低角色用户看到这些入口点进去也只能看到
              role-denied 兜底页，索性藏起来。 -->
-        <div v-if="canSeeQuickNav('members')" class="menu-item" @click="handleQuickNav('members')">
+        <!-- TODO: 接入外部登录系统后恢复 — 改 v-if 为 true -->
+        <div v-if="false" class="menu-item" @click="handleQuickNav('members')">
           <t-icon name="usergroup" class="menu-icon" />
           <span>{{ $t('tenantMember.title') }}</span>
         </div>
@@ -129,40 +131,43 @@
           <span>系统管理</span>
         </div>
         <!-- 切换租户入口在下拉「当前租户」区块 hover；此处仅为分隔线与菜单项。 -->
-        <div class="menu-divider"></div>
-        <div class="menu-item" @click="openClawhubSkill">
-          <span class="menu-icon menu-icon--emoji" role="img" :aria-label="$t('common.clawhubSkill')">🦞</span>
-          <span class="menu-text-with-icon">
-            <span>{{ $t('common.clawhubSkill') }}</span>
-            <span class="menu-new-badge">{{ $t('common.newBadge') }}</span>
-            <svg class="menu-external-icon" viewBox="0 0 16 16" aria-hidden="true">
-              <path fill="currentColor"
-                d="M12.667 8a.667.667 0 0 1 .666.667v4a2.667 2.667 0 0 1-2.666 2.666H4.667a2.667 2.667 0 0 1-2.667-2.666V5.333a2.667 2.667 0 0 1 2.667-2.666h4a.667.667 0 1 1 0 1.333h-4a1.333 1.333 0 0 0-1.333 1.333v7.334A1.333 1.333 0 0 0 4.667 13.333h6a1.333 1.333 0 0 0 1.333-1.333v-4A.667.667 0 0 1 12.667 8Zm2.666-6.667v4a.667.667 0 0 1-1.333 0V3.276l-5.195 5.195a.667.667 0 0 1-.943-.943l5.195-5.195h-2.057a.667.667 0 0 1 0-1.333h4a.667.667 0 0 1 .666.666Z" />
-            </svg>
-          </span>
-        </div>
-        <div class="menu-item" @click="openChromeExtension">
-          <t-icon name="extension" class="menu-icon" />
-          <span class="menu-text-with-icon">
-            <span>{{ $t('common.chromeExtension') }}</span>
-            <span class="menu-new-badge">{{ $t('common.newBadge') }}</span>
-            <svg class="menu-external-icon" viewBox="0 0 16 16" aria-hidden="true">
-              <path fill="currentColor"
-                d="M12.667 8a.667.667 0 0 1 .666.667v4a2.667 2.667 0 0 1-2.666 2.666H4.667a2.667 2.667 0 0 1-2.667-2.666V5.333a2.667 2.667 0 0 1 2.667-2.666h4a.667.667 0 1 1 0 1.333h-4a1.333 1.333 0 0 0-1.333 1.333v7.334A1.333 1.333 0 0 0 4.667 13.333h6a1.333 1.333 0 0 0 1.333-1.333v-4A.667.667 0 0 1 12.667 8Zm2.666-6.667v4a.667.667 0 0 1-1.333 0V3.276l-5.195 5.195a.667.667 0 0 1-.943-.943l5.195-5.195h-2.057a.667.667 0 0 1 0-1.333h4a.667.667 0 0 1 .666.666Z" />
-            </svg>
-          </span>
-        </div>
-        <div class="menu-item" :title="$t('common.githubStarTip')" @click="openGithub">
-          <t-icon name="logo-github" class="menu-icon" />
-          <span class="menu-text-with-icon">
-            <span>{{ $t('common.github') }}</span>
-            <t-icon name="star-filled" class="menu-github-star-icon" size="16px" aria-hidden="true" />
-            <svg class="menu-external-icon" viewBox="0 0 16 16" aria-hidden="true">
-              <path fill="currentColor"
-                d="M12.667 8a.667.667 0 0 1 .666.667v4a2.667 2.667 0 0 1-2.666 2.666H4.667a2.667 2.667 0 0 1-2.667-2.666V5.333a2.667 2.667 0 0 1 2.667-2.666h4a.667.667 0 1 1 0 1.333h-4a1.333 1.333 0 0 0-1.333 1.333v7.334A1.333 1.333 0 0 0 4.667 13.333h6a1.333 1.333 0 0 0 1.333-1.333v-4A.667.667 0 0 1 12.667 8Zm2.666-6.667v4a.667.667 0 0 1-1.333 0V3.276l-5.195 5.195a.667.667 0 0 1-.943-.943l5.195-5.195h-2.057a.667.667 0 0 1 0-1.333h4a.667.667 0 0 1 .666.666Z" />
-            </svg>
-          </span>
-        </div>
+        <!-- TODO: 恢复此版本对外推广入口时把 v-if 改回 true(Claw Skill / Chrome 插件 / GitHub Star 3 个外部链接) -->
+        <template v-if="false">
+          <div class="menu-divider"></div>
+          <div class="menu-item" @click="openClawhubSkill">
+            <span class="menu-icon menu-icon--emoji" role="img" :aria-label="$t('common.clawhubSkill')">🦞</span>
+            <span class="menu-text-with-icon">
+              <span>{{ $t('common.clawhubSkill') }}</span>
+              <span class="menu-new-badge">{{ $t('common.newBadge') }}</span>
+              <svg class="menu-external-icon" viewBox="0 0 16 16" aria-hidden="true">
+                <path fill="currentColor"
+                  d="M12.667 8a.667.667 0 0 1 .666.667v4a2.667 2.667 0 0 1-2.666 2.666H4.667a2.667 2.667 0 0 1-2.667-2.666V5.333a2.667 2.667 0 0 1 2.667-2.666h4a.667.667 0 1 1 0 1.333h-4a1.333 1.333 0 0 0-1.333 1.333v7.334A1.333 1.333 0 0 0 4.667 13.333h6a1.333 1.333 0 0 0 1.333-1.333v-4A.667.667 0 0 1 12.667 8Zm2.666-6.667v4a.667.667 0 0 1-1.333 0V3.276l-5.195 5.195a.667.667 0 0 1-.943-.943l5.195-5.195h-2.057a.667.667 0 0 1 0-1.333h4a.667.667 0 0 1 .666.666Z" />
+              </svg>
+            </span>
+          </div>
+          <div class="menu-item" @click="openChromeExtension">
+            <t-icon name="extension" class="menu-icon" />
+            <span class="menu-text-with-icon">
+              <span>{{ $t('common.chromeExtension') }}</span>
+              <span class="menu-new-badge">{{ $t('common.newBadge') }}</span>
+              <svg class="menu-external-icon" viewBox="0 0 16 16" aria-hidden="true">
+                <path fill="currentColor"
+                  d="M12.667 8a.667.667 0 0 1 .666.667v4a2.667 2.667 0 0 1-2.666 2.666H4.667a2.667 2.667 0 0 1-2.667-2.666V5.333a2.667 2.667 0 0 1 2.667-2.666h4a.667.667 0 1 1 0 1.333h-4a1.333 1.333 0 0 0-1.333 1.333v7.334A1.333 1.333 0 0 0 4.667 13.333h6a1.333 1.333 0 0 0 1.333-1.333v-4A.667.667 0 0 1 12.667 8Zm2.666-6.667v4a.667.667 0 0 1-1.333 0V3.276l-5.195 5.195a.667.667 0 0 1-.943-.943l5.195-5.195h-2.057a.667.667 0 0 1 0-1.333h4a.667.667 0 0 1 .666.666Z" />
+              </svg>
+            </span>
+          </div>
+          <div class="menu-item" :title="$t('common.githubStarTip')" @click="openGithub">
+            <t-icon name="logo-github" class="menu-icon" />
+            <span class="menu-text-with-icon">
+              <span>{{ $t('common.github') }}</span>
+              <t-icon name="star-filled" class="menu-github-star-icon" size="16px" aria-hidden="true" />
+              <svg class="menu-external-icon" viewBox="0 0 16 16" aria-hidden="true">
+                <path fill="currentColor"
+                  d="M12.667 8a.667.667 0 0 1 .666.667v4a2.667 2.667 0 0 1-2.666 2.666H4.667a2.667 2.667 0 0 1-2.667-2.666V5.333a2.667 2.667 0 0 1 2.667-2.666h4a.667.667 0 1 1 0 1.333h-4a1.333 1.333 0 0 0-1.333 1.333v7.334A1.333 1.333 0 0 0 4.667 13.333h6a1.333 1.333 0 0 0 1.333-1.333v-4A.667.667 0 0 1 12.667 8Zm2.666-6.667v4a.667.667 0 0 1-1.333 0V3.276l-5.195 5.195a.667.667 0 0 1-.943-.943l5.195-5.195h-2.057a.667.667 0 0 1 0-1.333h4a.667.667 0 0 1 .666.666Z" />
+              </svg>
+            </span>
+          </div>
+        </template>
         <template v-if="!authStore.isLiteMode">
           <div class="menu-divider"></div>
           <div class="menu-item danger" @click="handleLogout">
@@ -186,7 +191,8 @@
     <!-- Tenant switcher floating panel — shares the same teleport rationale
          as the IM submenu. Data comes from authStore.memberships, kept fresh via
          GET /auth/me when the submenu opens (throttled) and after invite/create. -->
-    <Teleport to="body">
+    <!-- TODO: 恢复时把 v-if 改回 true -->
+    <Teleport v-if="false" to="body">
       <div v-if="tenantSubmenuOpen" class="tenant-submenu-floating" :style="tenantSubmenuStyle"
         @mouseenter="showTenantSubmenu" @mouseleave="scheduleHideTenantSubmenu">
         <div class="tenant-submenu-header">
@@ -238,8 +244,8 @@
       </div>
     </Teleport>
 
-    <!-- 创建工作区弹窗 -->
-    <CreateTenantDialog v-model:visible="createTenantDialogVisible" @created="onTenantCreated" />
+    <!-- TODO: 恢复时把 v-if 改回 true -->
+    <CreateTenantDialog v-if="false" v-model:visible="createTenantDialogVisible" @created="onTenantCreated" />
   </div>
 </template>
 
@@ -252,17 +258,33 @@ import { MessagePlugin } from 'tdesign-vue-next'
 import { getCurrentUser, logout as logoutApi, userInfoFromApi } from '@/api/auth'
 import { useI18n } from 'vue-i18n'
 import IMChannelsOverviewPanel from '@/components/IMChannelsOverviewPanel.vue'
+// TODO: 恢复"共享空间"入口时配合 <CreateTenantDialog v-if="true"> 启用,当前组件已 import 但永远不渲染
 import CreateTenantDialog from '@/components/CreateTenantDialog.vue'
 import { listAllIMChannels, type IMChannelOverview } from '@/api/agent'
-import {
-  navigateAfterTenantSwitch,
-  persistLastActiveTenantPreference,
-  stashTenantSwitchToast,
-} from '@/utils/tenantSwitch'
-import type { TenantInfo } from '@/api/tenant'
+// TODO: 恢复"共享空间"入口时取消下面 4 行注释(tenant 切换工具函数)
+// import {
+//   navigateAfterTenantSwitch,
+//   persistLastActiveTenantPreference,
+//   stashTenantSwitchToast,
+// } from '@/utils/tenantSwitch'
+// TODO: 恢复"共享空间"入口时取消下面 1 行注释(TenantInfo type)
+// import type { TenantInfo } from '@/api/tenant'
 import { useRoleLabel, useHomeTenant } from '@/composables/useRoleLabel'
 import { getRootZoom, rectToCssPx, cssViewportSize } from '@/utils/zoom'
 import { openNewUserGuide } from '@/config/contextualGuides'
+
+// TODO: 恢复"共享空间"入口时同步启用下方整条死链:
+//   - 上方 2 个被注释的 import(CreateTenantDialog / tenantSwitch utils / TenantInfo)
+//   - tenantMenuItemRef / tenantSubmenuOpen / tenantSubmenuStyle /
+//     tenantSubmenuHideTimer(下方 ref/state)
+//   - createTenantDialogVisible / openCreateTenantDialog / onTenantCreated
+//   - switchableMemberships 计算属性
+//   - switchToTenant / isCurrentTenant / tenantDisplayName / tenantInitial /
+//     loadSwitchableMemberships
+//   - showTenantSubmenu / scheduleHideTenantSubmenu
+//   - showTenantSwitcher(当前强制 false,恢复时改回长度判断)
+// 配合上方模板 3 处 HTML 注释(swap 图标 + Teleport 块 + CreateTenantDialog)
+// 同时取消注释即可。
 
 const { t } = useI18n()
 
@@ -449,8 +471,9 @@ const switchableMemberships = computed<Membership[]>(() => {
 // between memberships. Cross-tenant superusers keep using the sidebar
 // TenantSelector for the "any tenant in the system" case, so we don't
 // double-show that here.
+// TODO: 恢复"共享空间"入口时改回 `switchableMemberships.value.length >= 1`
 const showTenantSwitcher = computed(() => {
-  return switchableMemberships.value.length >= 1
+  return false
 })
 
 const isCurrentTenant = (id: number) => {

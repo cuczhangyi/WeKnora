@@ -532,7 +532,7 @@ const secureServerLangTab = ref<'node' | 'go'>('node')
 const sessionStats = ref<Record<string, number>>({})
 
 const EMBED_TOKEN_STORAGE = 'weknora_embed_publish_tokens'
-const WEKNORA_BRAND_COLOR = '#07C05F'
+const WEKNORA_BRAND_COLOR = '#1890FF'
 
 function getDefaultEmbedPrimaryColor(): string {
   if (typeof window === 'undefined') return WEKNORA_BRAND_COLOR

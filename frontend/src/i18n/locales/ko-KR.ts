@@ -48,12 +48,12 @@ export default {
     reopen: "사용 가이드",
     steps: {
       welcome: {
-        title: "WeKnora에 오신 것을 환영합니다",
+        title: "元数云에 오신 것을 환영합니다",
         desc: "몇 단계만으로 지식 베이스, 대화, 에이전트의 핵심 사용법을 안내합니다. '다음'을 눌러 시작하세요.",
       },
       knowledge: {
         title: "지식 베이스 만들기",
-        desc: "모든 것의 시작점입니다. 문서, 웹페이지, FAQ를 업로드하면 WeKnora가 자동으로 분석하고 색인합니다. 여기를 클릭해 지식 베이스로 이동하세요.",
+        desc: "모든 것의 시작점입니다. 문서, 웹페이지, FAQ를 업로드하면 元数云가 자동으로 분석하고 색인합니다. 여기를 클릭해 지식 베이스로 이동하세요.",
       },
       chat: {
         title: "AI 대화 시작하기",
@@ -1031,37 +1031,37 @@ export default {
       desc: "현재 역할로는 이 설정 페이지에 접근할 수 없습니다. 이 테넌트의 관리자에게 필요한 역할을 요청하세요.",
     },
     weknoraCloud: {
-      title: 'WeKnora Cloud',
-      description: 'WeKnora Cloud APPID 및 APPSECRET 자격 증명을 설정합니다. 자격 증명은 모델 서비스와 문서 파싱 엔진에 사용됩니다.',
+      title: '元数云 Cloud',
+      description: '元数云 Cloud APPID 및 APPSECRET 자격 증명을 설정합니다. 자격 증명은 모델 서비스와 문서 파싱 엔진에 사용됩니다.',
       viewDocs: '문서 보기',
       unconfigured: '자격 증명이 설정되지 않았습니다. APPID와 APPSECRET을 입력하세요.',
       configured: '자격 증명이 설정되었으며 정상 작동 중입니다.',
-      expired: 'WeKnora Cloud 자격 증명 만료',
+      expired: '元数云 Cloud 자격 증명 만료',
       expiredDefault: '서비스 재시작 후 암호화 키가 변경되어 저장된 자격 증명을 복호화할 수 없습니다. 다시 입력하세요.',
       reconfigure: '재설정',
       appIdLabel: 'APPID',
-      appIdDesc: 'WeKnora Cloud 애플리케이션 ID',
+      appIdDesc: '元数云 Cloud 애플리케이션 ID',
       appIdPlaceholder: 'APPID 입력',
       appSecretLabel: 'APPSECRET',
-      appSecretDesc: 'WeKnora Cloud 애플리케이션 비밀키',
+      appSecretDesc: '元数云 Cloud 애플리케이션 비밀키',
       appSecretPlaceholder: 'APPSECRET 입력',
       saveHint: '저장 전 서비스 연결 가능 여부를 확인하고 암호화하여 저장합니다.',
       saveBtn: '자격 증명 저장',
       usageTitle: '사용 가이드',
-      usageSteps: '1. APPID / APPSECRET 저장\n2. 아래 「클라우드 모델」에서 chat, embedding, rerank, vlm 추가\n3. 문서 파싱: 지식 베이스 설정 → 파싱 엔진 → WeKnora Cloud',
+      usageSteps: '1. APPID / APPSECRET 저장\n2. 아래 「클라우드 모델」에서 chat, embedding, rerank, vlm 추가\n3. 문서 파싱: 지식 베이스 설정 → 파싱 엔진 → 元数云 Cloud',
       fillRequired: 'APPID와 APPSECRET을 입력하세요',
       saveSuccess: '자격 증명 저장 완료',
       saveFailed: '자격 증명 저장 실패',
-      credentialConfigured: 'WeKnoraCloud 자격 증명이 설정되었습니다.',
+      credentialConfigured: '元数云Cloud 자격 증명이 설정되었습니다.',
       credentialExpired: '자격 증명이 만료되었습니다. 재설정하세요.',
-      credentialUnconfigured: 'WeKnoraCloud 자격 증명이 설정되지 않았습니다. APPID와 APPSECRET을 먼저 설정하세요.',
+      credentialUnconfigured: '元数云Cloud 자격 증명이 설정되지 않았습니다. APPID와 APPSECRET을 먼저 설정하세요.',
       checkingStatus: '자격 증명 상태 확인 중...',
       goToSettings: '설정으로 이동',
-      modelHintConfigured: 'WeKnoraCloud 자격 증명이 설정되었습니다. 지원 모델은',
+      modelHintConfigured: '元数云Cloud 자격 증명이 설정되었습니다. 지원 모델은',
       modelHintDocsLink: 'API 문서',
       modelsSection: {
         title: '클라우드 모델',
-        descReady: 'WeKnora Cloud의 네 가지 표준 모델을 등록하여 대화, 검색, 재정렬, 비전에 사용합니다.',
+        descReady: '元数云 Cloud의 네 가지 표준 모델을 등록하여 대화, 검색, 재정렬, 비전에 사용합니다.',
         descPending: '위에서 자격 증명을 먼저 저장한 후 여기서 모델을 추가하세요.',
         statusAdded: '추가됨',
         statusPending: '자격 증명 필요',
@@ -1077,10 +1077,10 @@ export default {
       addModelsFailed: '모델 추가 실패',
       addModelsEmbeddingFailed: 'Embedding 연결 테스트 실패, 벡터 차원을 가져올 수 없습니다',
       addModelsDisplayName: {
-        chat: 'WeKnoraCloud 대화',
-        embedding: 'WeKnoraCloud Embedding',
-        rerank: 'WeKnoraCloud ReRank',
-        vllm: 'WeKnoraCloud 비전',
+        chat: '元数云Cloud 대화',
+        embedding: '元数云Cloud Embedding',
+        rerank: '元数云Cloud ReRank',
+        vllm: '元数云Cloud 비전',
       },
     },
     system: "시스템 설정",
@@ -1481,7 +1481,7 @@ export default {
   },
   initialization: {
     title: "초기화",
-    welcome: "WeKnora에 오신 것을 환영합니다",
+    welcome: "元数云에 오신 것을 환영합니다",
     description: "사용을 시작하려면 먼저 시스템을 구성하세요",
     step1: "1단계: LLM 모델 구성",
     step2: "2단계: 임베딩 모델 구성",
@@ -1734,7 +1734,7 @@ export default {
     backToLogin: "로그인으로 돌아가기",
     registerNow: "지금 가입하기",
     loginHint: "로그인하여 계속하세요. 처음이시라면 아래에서 계정을 만드세요.",
-    firstTime: "WeKnora가 처음이신가요?",
+    firstTime: "元数云가 처음이신가요?",
     registerSuccess: "가입 성공! 시스템이 전용 테넌트를 생성했습니다. 로그인해주세요",
     registerFailed: "가입 실패",
     subtitle: "RAG Q&A, ReAct 에이전트, Wiki 지식베이스 — 대규모 언어 모델 기반 엔터프라이즈 지식 프레임워크",
@@ -2399,6 +2399,15 @@ export default {
         ssrf: {
           whitelist: "SSRF 보호 허용 목록",
         },
+        // 테넌트 범위(Category: "tenant")의 두 key.
+        // - max_owned_per_user: 비수퍼유저가 셀프 서비스로 생성/소유할 수 있는
+        //   최대 테넌트 수. >0이면 상한 적용, 0이면 코드 내장 기본값(10) 사용,
+        //   <0이면 상한 완전 해제(공개 배포 환경에서는 비권장).
+        //   생성 요청마다 실시간 읽기 — 재시작 불필요.
+        // - default_storage_quota_gb: 신규 테넌트의 기본 저장 용량(GB).
+        //   >0이면 그 값, <=0이면 코드 내장 기본값(10 GB) 사용.
+        //   생성 시점에만 읽으며, 기존 테넌트에는 소급 적용되지 않음.
+        //   행의 인라인 "모든 기존 테넌트에 적용" 버튼이 명시적 일괄 재기록 수단.
         tenant: {
           max_owned_per_user: "사용자당 최대 테넌트 수",
           default_storage_quota_gb: "신규 테넌트 기본 저장 용량 (GB)",
@@ -3023,7 +3032,7 @@ export default {
     },
   },
   createChat: {
-    title: "안녕하세요, WeKnora입니다 — 당신의 지식을 손끝에",
+    title: "안녕하세요, 元数云입니다 — 당신의 지식을 손끝에",
     newSessionTitle: "새 세션",
     messages: {
       selectKnowledgeBase: "먼저 지식베이스를 선택해주세요",
@@ -4871,8 +4880,8 @@ export default {
           desc: 'PaddleOCR-VL Cloud API',
         },
         weknoracloud: {
-          name: 'WeKnora Cloud',
-          desc: 'WeKnora Cloud를 통한 문서 파싱',
+          name: '元数云 Cloud',
+          desc: '元数云 Cloud를 통한 문서 파싱',
         },
         markitdown: {
           name: 'MarkItDown',

@@ -185,7 +185,8 @@
 
       </div>
 
-      <aside v-if="showLeaveDangerZone" class="leave-space-panel" :aria-label="$t('tenant.leaveDangerZone.title')">
+      <!-- TODO: 接入外部登录系统后恢复 — 改 v-if 为 true -->
+      <aside v-if="false" class="leave-space-panel" :aria-label="$t('tenant.leaveDangerZone.title')">
         <div class="leave-space-panel-inner">
           <div class="leave-space-panel-text">
             <div class="leave-space-panel-title">{{ $t('tenant.leaveDangerZone.title') }}</div>
@@ -199,7 +200,8 @@
         </div>
       </aside>
 
-      <aside v-if="showDeleteDangerZone" class="leave-space-panel delete-space-panel"
+      <!-- TODO: 接入外部登录系统后恢复 — 改 v-if 为 true -->
+      <aside v-if="false" class="leave-space-panel delete-space-panel"
         :aria-label="$t('tenant.deleteDangerZone.title')">
         <div class="leave-space-panel-inner">
           <div class="leave-space-panel-text">
@@ -239,16 +241,25 @@
 </template>
 
 <script setup lang="ts">
+// TODO: 接入外部登录系统后同步启用下方整条死链(配合模板里两处 v-if="false" 改回 true):
+//   - 模板: leave-space-panel + delete-space-panel 危险区面板(line 188, 202)
+//   - 模板: 两个确认弹窗(leave + delete 各自的 t-dialog,文件下方)
+//   - 脚本: confirmLeaveTenant / confirmDeleteTenant 函数
+//   - 脚本: showLeaveDangerZone / showDeleteDangerZone 计算属性
+//   - 脚本: leaveConfirmVisible / deleteConfirmVisible / deleteConfirmName 等 ref
+//   - 脚本: leaveTenant API 客户端 import
+// 当前文件已被简化:用户/租户的生命周期由外部登录系统管理,前端不再提供 leave/delete 入口。
 import { ref, computed, onMounted, watch } from 'vue'
 import { DialogPlugin, MessagePlugin } from 'tdesign-vue-next'
 import { getCurrentUser, type TenantInfo } from '@/api/auth'
 import { deleteTenant as deleteTenantApi, updateTenant as updateTenantApi } from '@/api/tenant'
-import {
-  leaveTenant,
-  fetchAllTenantMembers,
-  type TenantMember,
-  type TenantRole,
-} from '@/api/tenant/members'
+// TODO: 接入外部登录系统后取消下面 6 行注释(leave / fetchAllTenantMembers / types)
+// import {
+//   leaveTenant,
+//   fetchAllTenantMembers,
+//   type TenantMember,
+//   type TenantRole,
+// } from '@/api/tenant/members'
 import { useAuthStore } from '@/stores/auth'
 import { useI18n } from 'vue-i18n'
 import { useRoleLabel, useHomeTenant } from '@/composables/useRoleLabel'

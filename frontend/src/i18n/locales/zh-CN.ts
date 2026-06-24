@@ -48,12 +48,12 @@ export default {
     reopen: "新手引导",
     steps: {
       welcome: {
-        title: "欢迎使用 WeKnora",
+        title: "欢迎使用 元数云",
         desc: "只需几步，带你快速了解知识库、对话与智能体的核心用法。点击「下一步」开始。",
       },
       knowledge: {
         title: "创建你的知识库",
-        desc: "知识库是一切的起点：上传文档、网页或 FAQ，WeKnora 会自动解析并建立索引。点击这里进入知识库。",
+        desc: "知识库是一切的起点：上传文档、网页或 FAQ，元数云 会自动解析并建立索引。点击这里进入知识库。",
       },
       chat: {
         title: "发起智能对话",
@@ -264,7 +264,7 @@ export default {
       steps: {
         kb: {
           title: "选择知识范围",
-          desc: "点击 @ 可指定一个或多个知识库/文件，仅基于选中内容回答；不选则按当前智能体配置检索。",
+          desc: "点击 {'@'} 可指定一个或多个知识库/文件，仅基于选中内容回答；不选则按当前智能体配置检索。",
         },
         input: {
           title: "输入你的问题",
@@ -1038,37 +1038,37 @@ export default {
       title: "权限不足",
       desc: "你当前的角色无权访问此设置项。请联系本空间的管理员获取所需角色。",
     },    weknoraCloud: {
-      title: "WeKnora Cloud",
-      description: "配置 WeKnora Cloud 的 APPID 和 APPSECRET 凭证。凭证用于模型服务和文档解析引擎。",
+      title: "元数云 Cloud",
+      description: "配置 元数云 Cloud 的 APPID 和 APPSECRET 凭证。凭证用于模型服务和文档解析引擎。",
       viewDocs: "查看文档",
       unconfigured: "尚未配置凭证，请填写 APPID 和 APPSECRET",
       configured: "凭证已配置，状态正常",
-      expired: "WeKnora Cloud 凭证已失效",
+      expired: "元数云 Cloud 凭证已失效",
       expiredDefault: "服务重启后加密密钥已变更，已保存的凭证无法解密。请重新填写凭证。",
       reconfigure: "重新配置",
       appIdLabel: "APPID",
-      appIdDesc: "WeKnora Cloud 的应用 ID",
+      appIdDesc: "元数云 Cloud 的应用 ID",
       appIdPlaceholder: "请输入 APPID",
       appSecretLabel: "APPSECRET",
-      appSecretDesc: "WeKnora Cloud 的应用密钥",
+      appSecretDesc: "元数云 Cloud 的应用密钥",
       appSecretPlaceholder: "请输入 APPSECRET",
       saveHint: "保存后将验证服务可达性并加密存储凭证",
       saveBtn: "保存凭证",
       usageTitle: "使用说明",
-      usageSteps: "1. 填写并保存 APPID / APPSECRET\n2. 在下方「云模型接入」中按行添加 chat、embedding、rerank、vlm\n3. 文档解析：知识库设置 → 解析引擎，选择 WeKnora Cloud 引擎",
+      usageSteps: "1. 填写并保存 APPID / APPSECRET\n2. 在下方「云模型接入」中按行添加 chat、embedding、rerank、vlm\n3. 文档解析：知识库设置 → 解析引擎，选择 元数云 Cloud 引擎",
       fillRequired: "请填写 APPID 和 APPSECRET",
       saveSuccess: "凭证保存成功",
       saveFailed: "凭证保存失败",
-      credentialConfigured: "WeKnoraCloud 凭证已配置",
+      credentialConfigured: "元数云Cloud 凭证已配置",
       credentialExpired: "凭证已失效，请重新配置。",
-      credentialUnconfigured: "尚未配置 WeKnoraCloud 凭证，请先填写 APPID 和 APPSECRET。",
+      credentialUnconfigured: "尚未配置 元数云Cloud 凭证，请先填写 APPID 和 APPSECRET。",
       checkingStatus: "正在检查凭证状态...",
       goToSettings: "前往设置中配置",
-      modelHintConfigured: "WeKnoraCloud 凭证已配置。支持的模型可参考",
+      modelHintConfigured: "元数云Cloud 凭证已配置。支持的模型可参考",
       modelHintDocsLink: "接口文档",
       modelsSection: {
         title: "云模型接入",
-        descReady: "将 WeKnora Cloud 提供的四类标准模型注册到当前空间，用于对话、向量检索、重排序与多模态理解。",
+        descReady: "将 元数云 Cloud 提供的四类标准模型注册到当前空间，用于对话、向量检索、重排序与多模态理解。",
         descPending: "请先保存上方凭证，再在此添加云模型。",
         statusAdded: "已添加",
         statusPending: "待配置凭证",
@@ -1085,10 +1085,10 @@ export default {
       addModelsAllExist: "四类模型均已存在",
       addModelsEmbeddingFailed: "Embedding 模型连接测试失败，无法获取向量维度",
       addModelsDisplayName: {
-        chat: "WeKnoraCloud 对话",
-        embedding: "WeKnoraCloud Embedding",
-        rerank: "WeKnoraCloud ReRank",
-        vllm: "WeKnoraCloud 视觉",
+        chat: "元数云Cloud 对话",
+        embedding: "元数云Cloud Embedding",
+        rerank: "元数云Cloud ReRank",
+        vllm: "元数云Cloud 视觉",
       },
     },
     system: "系统设置",
@@ -1489,7 +1489,7 @@ export default {
   },
   initialization: {
     title: "初始化",
-    welcome: "欢迎使用WeKnora",
+    welcome: "欢迎使用元数云",
     description: "请先配置系统以开始使用",
     step1: "步骤1：配置LLM模型",
     step2: "步骤2：配置嵌入模型",
@@ -1741,7 +1741,7 @@ export default {
     backToLogin: "返回登录",
     registerNow: "立即注册",
     loginHint: "登录以继续使用；首次使用请在下方创建账户。",
-    firstTime: "首次使用 WeKnora？",
+    firstTime: "首次使用 元数云？",
     registerSuccess: "注册成功！系统已为您创建专属空间，请登录",
     registerFailed: "注册失败",
     subtitle: "RAG 问答、ReAct 智能体与 Wiki 知识库，大模型驱动的企业级知识框架",
@@ -2402,6 +2402,13 @@ export default {
         ssrf: {
           whitelist: "SSRF 防护白名单",
         },
+        // 租户范围（Category: "tenant"）的两个 key。
+        // - max_owned_per_user：非超管用户通过自助创建可拥有的最大租户数；
+        //   >0 用作上限，0 回退到内置默认值 10，<0 完全关闭限制（公网慎用）。
+        //   修改后立即生效，无需重启。
+        // - default_storage_quota_gb：新建租户时的默认存储配额（GB）；
+        //   >0 用作配额，<=0 回退到内置默认值 10GB。仅在创建时读取，
+        //   不会回写已有租户；批量改写通过 UI 行内的"应用到所有现有租户"按钮触发。
         tenant: {
           max_owned_per_user: "每用户最大租户数",
           default_storage_quota_gb: "新租户默认存储配额 (GB)",
@@ -3040,7 +3047,7 @@ export default {
     },
   },
   createChat: {
-    title: "Hi，我是 WeKnora，让你的知识触手可及",
+    title: "Hi，我是 元数云，让你的知识触手可及",
     newSessionTitle: "新会话",
     messages: {
       selectKnowledgeBase: "请先选择知识库",
@@ -3270,9 +3277,9 @@ export default {
     allowFileUploadDesc: "开启后，访客可上传图片与文档附件。仅当绑定的智能体已启用图片上传时才会生效。",
     webhookUrl: "Webhook 地址",
     webhookUrlPlaceholder: "https://your-server.example.com/weknora/embed-events",
-    webhookUrlDesc: "可选。访客发消息与助手回复完成时，WeKnora 会向该 HTTPS 地址 POST 事件（message_sent / message_received）。",
+    webhookUrlDesc: "可选。访客发消息与助手回复完成时，元数云 会向该 HTTPS 地址 POST 事件（message_sent / message_received）。",
     webhookSecret: "Webhook 签名密钥",
-    webhookSecretPlaceholder: "用于 HMAC-SHA256 签名（X-WeKnora-Signature）",
+    webhookSecretPlaceholder: "用于 HMAC-SHA256 签名（X-元数云-Signature）",
     webhookSecretKeep: "留空表示不修改已保存的密钥",
     webhookSecretDesc: "可选。配置后请求体会带 sha256 签名头，便于你的服务端校验来源。",
     secureModeDocHint: "完整集成说明见项目文档 docs/embed-secure-mode.md",
@@ -4849,8 +4856,8 @@ export default {
           desc: "PaddleOCR-VL 云 API",
         },
         weknoracloud: {
-          name: "WeKnora Cloud",
-          desc: "使用 WeKnora Cloud 进行文档解析",
+          name: "元数云 Cloud",
+          desc: "使用 元数云 Cloud 进行文档解析",
         },
         markitdown: {
           name: "MarkItDown",
